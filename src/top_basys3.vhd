@@ -82,14 +82,23 @@ architecture top_basys3_arch of top_basys3 is
 
 
   -- create wire to connect button to 7SD enable (active-low)
-
-  
+    signal w_7SD_EN_n : std_logic;
+    
 begin
-	-- PORT MAPS ----------------------------------------
 
+    w_7SD_EN_n <= not btnC;
+    an <= (0 => w_7SD_EN_n, others => '1');
+	-- PORT MAPS ----------------------------------------
+    
 	--	Port map: wire your component up to the switches and seven-segment display cathodes
 	-----------------------------------------------------	
 	
+    U_DECODER: sevenseg_decoder
+        port map(
+            i_Hex   => sw,
+            o_seg_n => seg
+        );
+
 	
 	-- CONCURRENT STATEMENTS ----------------------------
 	
