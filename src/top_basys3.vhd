@@ -80,6 +80,13 @@ architecture top_basys3_arch of top_basys3 is
 	
   -- declare the component of your top-level design
 
+component sevenseg_decoder is
+        port(
+            i_Hex   : in  std_logic_vector(3 downto 0);
+            o_seg_n : out std_logic_vector(6 downto 0)
+        );
+    end component;
+
 
   -- create wire to connect button to 7SD enable (active-low)
     signal w_7SD_EN_n : std_logic;
